@@ -17,7 +17,6 @@ class Cat {
         this._name = name;
         this._image = image;
     }
-
     addToPage() {
         let htmlContainer = `<li><h2>${this._name}</h2><figure><img class="cat-image" src="${this._image}" alt="${this._name}"></figure></li>`;
 
