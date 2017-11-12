@@ -20,14 +20,10 @@ class Cat {
 
     addToPage() {
         let htmlContainer = `<li><h2>${this._name}</h2>
-            <figure><img src="${this._image}" alt="${this._name}"></figure>
+            <figure><img clas="cat-image" src="${this._image}" alt="${this._name}"></figure>
             </li>`;
 
         $('#cats-list').append($(htmlContainer));
-    };
-
-    imageClicked() {
-        clicks += 1;
     };
 }
 
@@ -35,19 +31,38 @@ class Cat {
  * @description init image click times value
  */
 function initClickTimesValue() {
-    $('#clicked-times').text(clickTime);
+    $('#clicked-times').text(clicks);
 }
 
 
+/**
+ * Create new cat object and add them to an array
+ */
+
+let catOne = new Cat("Birdy", imageFolder + "kitten-2.jpg");
+
+let catTwo = new Cat("Cindy", imageFolder + "kitten-7.jpg");
+
+let cats = [catOne, catTwo];
+
+
+/**
+ * @description load all cats in cats array
+ */
+function loadCats(cats) {
+    for (let cat of cats) {
+        cat.addToPage();
+    }
+}
+
 $(document).ready(function () {
+
     initClickTimesValue();
+    loadCats(cats);
 
-
-
-    let cat_one = new Cat("Birdy", "")
-
+    // Listen to click event
     $('.cat-image').click(function (e) {
         clicks += 1;
-        $('#clicked-times').text(clickTime);
+        $('#clicked-times').text(clicks);
     });
 });
