@@ -94,10 +94,11 @@ $(function () {
         showSelectedCat(selectedCatName);
     });
 
-    // Listen to click event
-    $('.cat-image').click(function (e) {
-        console.log('clicked');
+     // Listen to click event
+    $('#cats-list').click('img', function (e) {
+        console.log(event.target);
         clicks += 1;
         $('#clicked-times').text(clicks);
     });
+
 });
