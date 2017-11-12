@@ -7,17 +7,24 @@
 body {
     font-size: 100%;
     font-family: "Lucida Grande", Arial, sans-serif;
+    color: #1b2225;
 }
 
 h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
-    margin: 2em 0 1em 0;
+    margin: 2em 0 0.5em 0;
     line-height: 1.3em;
+    color: #1b2225;
+}
+
+h1 {
+    font-size: 1.4rem;
 }
 
 p {
     margin: 0 0 0.5em 0;
     line-height: 1.5em;
+    color: #1b2225;
 }
 
 img {
@@ -25,10 +32,50 @@ img {
     max-width: 480px;
 }
 
+a {
+    color: #617983;
+}
+a:hover, a:focus {
+    color: #475960;
+}
+
 .wrapper {
     width: 100%;
     max-width: 960px;
     margin: 0 auto;
+}
+
+/* Click record*/
+.click-record{
+    color: #64848e;
+    text-align: right;
+    margin-top: -2.5em;
+    text-transform: uppercase;
+}
+#clicked-times{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 2em;
+    font-family: Input, "Courier New", sans-serif;
+}
+/* cats names list */
+#cats-names-list {
+    margin: 1em 0;
+    list-style: none;
+    padding: 1em 0;
+    text-align: center;
+    border-top: 8px double #617983;
+}
+#cats-names-list li{
+    display: inline-block;
+    width: auto;
+    margin: 0 0.5em;
+}
+#cats-names-list li a{
+    display: block;
+    text-align: center;
+    padding: 0.2em 0.4em;
+    text-decoration: none;
 }
 
 /* cats list style */

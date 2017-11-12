@@ -31,6 +31,14 @@ var Cat = function () {
         value: function addToPage() {
             var htmlContainer = '<li><h2>' + this._name + '</h2><figure><img class="cat-image" src="' + this._image + '" alt="' + this._name + '"></figure></li>';
 
+            $('#selected-cat').empty();
+            $('#selected-cat').append($(htmlContainer));
+        }
+    }, {
+        key: 'addToList',
+        value: function addToList() {
+            var htmlContainer = '<li><a href="#" title="' + this._name + '">' + this._name + '</a>></li>';
+
             $('#cats-list').append($(htmlContainer));
         }
     }]);
@@ -85,9 +93,39 @@ function loadCats(cats) {
     }
 }
 
+/**
+ * @description load cats name into a list
+ */
+function loadCatsList(cats) {
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+        for (var _iterator2 = cats[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var cat = _step2.value;
+
+            cat.addToPage();
+        }
+    } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
+            }
+        } finally {
+            if (_didIteratorError2) {
+                throw _iteratorError2;
+            }
+        }
+    }
+}
+
 $(function () {
     initClickTimesValue();
-    loadCats(cats);
+    loadCatsList(cats);
 
     // Listen to click event
     $('.cat-image').click(function (e) {

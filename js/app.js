@@ -3,7 +3,7 @@
  * @type {number}
  */
 let clicks = 0;
-
+let selectedCatName = '';
 const imageFolder = "images/";
 
 /**
@@ -17,10 +17,19 @@ class Cat {
         this._name = name;
         this._image = image;
     }
+
     addToPage() {
         let htmlContainer = `<li><h2>${this._name}</h2><figure><img class="cat-image" src="${this._image}" alt="${this._name}"></figure></li>`;
 
+        $('#cats-list').empty();
+
         $('#cats-list').append($(htmlContainer));
+    };
+
+    addToList() {
+        let htmlContainer = `<li><a href="#" class="cat-name"  title="${this._name}">${this._name}</a></li>`;
+
+        $('#cats-names-list').append($(htmlContainer));
     };
 }
 
@@ -36,9 +45,12 @@ function initClickTimesValue() {
  * Create new cat object and add them to an array
  */
 
-let catOne = new Cat("Birdy", imageFolder + "kitten-2.jpg");
-let catTwo = new Cat("Cindy", imageFolder + "kitten-7.jpg");
-let cats = [catOne, catTwo];
+let cat1 = new Cat("Birdy", imageFolder + "kitten-2.jpg");
+let cat2 = new Cat("Cindy", imageFolder + "kitten-7.jpg");
+let cat3 = new Cat("Ninja", imageFolder + "kitten-Nirzar.jpg");
+let cat4 = new Cat("Thai", imageFolder + "kitten-Thai.jpg");
+let cat5 = new Cat("Twins", imageFolder + "kitten-twins.jpg");
+let cats = [cat1, cat2, cat3, cat4, cat5];
 
 
 /**
@@ -50,12 +62,41 @@ function loadCats(cats) {
     }
 }
 
+/**
+ * @description load cats name into a list
+ */
+function loadCatsList(cats) {
+    for (let cat of cats) {
+        cat.addToList();
+    }
+}
+
+/**
+ * @description show selected cat image
+ */
+
+function showSelectedCat(selectedCatName) {
+    for (let cat of cats) {
+        if (cat._name === selectedCatName ){
+            console.log(cat._name === selectedCatName);
+            cat.addToPage();
+        }
+    }
+}
+
 $(function () {
     initClickTimesValue();
-    loadCats(cats);
+    loadCatsList(cats);
+
+    $('#cats-names-list').click('li', function (e) {
+        let target = event.target;
+        selectedCatName = $(target).attr('title');
+        showSelectedCat(selectedCatName);
+    });
 
     // Listen to click event
     $('.cat-image').click(function (e) {
+        console.log('clicked');
         clicks += 1;
         $('#clicked-times').text(clicks);
     });
