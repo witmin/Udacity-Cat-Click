@@ -11,10 +11,8 @@ $(function () {
         }
 
         addToPage() {
-            let htmlContainer = `<li><h2>${this._name}</h2><figure><img class="cat-image" src="${this._image}" alt="${this._name}"></figure></li>`;
-
             $('#cats-list').empty();
-
+            let htmlContainer = `<li><h2>${this._name}</h2><figure><img class="cat-image" src="${this._image}" alt="${this._name}"></figure></li>`;
             $('#cats-list').append($(htmlContainer));
         };
 
@@ -39,6 +37,10 @@ $(function () {
     let modal = {
         clicks: 0,
         selectedCatName: '',
+
+        addNewCat: function (name, imageUrl) {
+            cats.push(new Cat(name, imageUrl));
+        }
     };
 
 
@@ -48,6 +50,7 @@ $(function () {
         },
 
         loadCatsList: function (cats) {
+            $('#cats-names-list').empty();
             for (let cat of cats) {
                 cat.addToList();
             }
@@ -62,6 +65,23 @@ $(function () {
                     cat.addToPage();
                 }
             }
+        },
+
+        // init admin form by hide it
+        initAdminForm: function () {
+            $('#admin-form').hide();
+        },
+
+        showAdminForm: function () {
+            $('#admin-form').show();
+        },
+
+        hideAdminForm: function () {
+            $('#admin-form').hide();
+        },
+
+        clearFormData: function () {
+            $('#admin-form input').empty();
         }
     };
 
@@ -73,7 +93,10 @@ $(function () {
         render: function () {
             view.initClickTimesValue(modal.clicks);
             view.loadCatsList(cats);
+            view.initAdminForm();
+        },
 
+        eventListeners: function () {
             /**
              * Listen to click events
              */
@@ -88,9 +111,31 @@ $(function () {
                 modal.clicks += 1;
                 $('#clicked-times').text(modal.clicks);
             });
+
+            $('#show-admin-form').click(function () {
+                view.showAdminForm();
+            });
+
+            $('#cancel').click(function () {
+                view.hideAdminForm();
+                view.clearFormData();
+            });
+
+            $('#save').click(function () {
+                let newCatName = $('#new-cat-name').val();
+                let newCatImageUrl = $('#new-cat-image-url').val();
+                let newClickNum = $('#new-number-of-clicks').val();
+
+                console.log(newCatName + " " + newCatImageUrl);
+                modal.addNewCat(newCatName, newCatImageUrl);
+                view.initClickTimesValue(newClickNum);
+                view.loadCatsList(cats);
+                view.hideAdminForm();
+            });
         }
     };
 
     octopus.render();
+    octopus.eventListeners();
 
 });
