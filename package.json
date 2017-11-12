@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-      "js" : "babel js/app.js --out-file build/app.js"
+      "js" : "babel js/app.js --out-file dist/app.js"
 
   },
   "repository": {
