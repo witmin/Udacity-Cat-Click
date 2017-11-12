@@ -6,6 +6,18 @@ let clicks = 0;
 let selectedCatName = '';
 const imageFolder = "images/";
 
+
+/**
+ * Create new cat object and add them to an array
+ */
+
+let cat1 = new Cat("Birdy", imageFolder + "kitten-2.jpg");
+let cat2 = new Cat("Cindy", imageFolder + "kitten-7.jpg");
+let cat3 = new Cat("Ninja", imageFolder + "kitten-Nirzar.jpg");
+let cat4 = new Cat("Thai", imageFolder + "kitten-Thai.jpg");
+let cat5 = new Cat("Twins", imageFolder + "kitten-twins.jpg");
+let cats = [cat1, cat2, cat3, cat4, cat5];
+
 /**
  * @description set up a Class of cat
  * @constructor
@@ -39,19 +51,6 @@ class Cat {
 function initClickTimesValue() {
     $('#clicked-times').text(clicks);
 }
-
-
-/**
- * Create new cat object and add them to an array
- */
-
-let cat1 = new Cat("Birdy", imageFolder + "kitten-2.jpg");
-let cat2 = new Cat("Cindy", imageFolder + "kitten-7.jpg");
-let cat3 = new Cat("Ninja", imageFolder + "kitten-Nirzar.jpg");
-let cat4 = new Cat("Thai", imageFolder + "kitten-Thai.jpg");
-let cat5 = new Cat("Twins", imageFolder + "kitten-twins.jpg");
-let cats = [cat1, cat2, cat3, cat4, cat5];
-
 
 /**
  * @description load all cats in cats array
