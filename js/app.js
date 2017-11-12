@@ -38,9 +38,7 @@ function initClickTimesValue() {
  */
 
 let catOne = new Cat("Birdy", imageFolder + "kitten-2.jpg");
-
 let catTwo = new Cat("Cindy", imageFolder + "kitten-7.jpg");
-
 let cats = [catOne, catTwo];
 
 
@@ -60,7 +58,6 @@ $(function () {
     // Listen to click event
     $('.cat-image').click(function (e) {
         clicks += 1;
-        console.log(clicks);
         $('#clicked-times').text(clicks);
     });
 });
