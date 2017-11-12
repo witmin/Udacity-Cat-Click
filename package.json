@@ -1,0 +1,26 @@
+{
+  "name": "cat-clicker",
+  "version": "1.0.0",
+  "description": "a Udacity frong-end developer nano degree project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/witmin/Udacity-Cat-Click.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Millie Lin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/witmin/Udacity-Cat-Click/issues"
+  },
+  "homepage": "https://github.com/witmin/Udacity-Cat-Click#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
