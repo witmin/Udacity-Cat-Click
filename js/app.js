@@ -19,9 +19,7 @@ class Cat {
     }
 
     addToPage() {
-        let htmlContainer = `<li><h2>${this._name}</h2>
-            <figure><img clas="cat-image" src="${this._image}" alt="${this._name}"></figure>
-            </li>`;
+        let htmlContainer = `<li><h2>${this._name}</h2><figure><img class="cat-image" src="${this._image}" alt="${this._name}"></figure></li>`;
 
         $('#cats-list').append($(htmlContainer));
     };
@@ -55,14 +53,14 @@ function loadCats(cats) {
     }
 }
 
-$(document).ready(function () {
-
+$(function () {
     initClickTimesValue();
     loadCats(cats);
 
     // Listen to click event
     $('.cat-image').click(function (e) {
         clicks += 1;
+        console.log(clicks);
         $('#clicked-times').text(clicks);
     });
 });
